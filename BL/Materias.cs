@@ -57,7 +57,7 @@ namespace BL
             {
                 using (DL.AMorenoControlEscolarEntities1 context = new DL.AMorenoControlEscolarEntities1())
                 {
-                    var obj = context.MateriaGetById(IdUsuario).FirstOrDefault();
+                    var obj = context.MateriaGetById(IdMaterias).FirstOrDefault();
                     result.Object = new List<object>();
                     if (obj != null)
                     {

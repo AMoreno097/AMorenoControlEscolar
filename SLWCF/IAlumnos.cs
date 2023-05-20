@@ -11,9 +11,13 @@ namespace SLWCF
     [ServiceContract]
     public interface IAlumnos
     {
+
         [OperationContract]
+        [ServiceKnownType(typeof(ML.alumnos))]
         SLWCF.Result GetAll();
         [OperationContract]
+        [ServiceKnownType(typeof(ML.alumnos))]
+
         SLWCF.Result GetById(int IdAlumno);
         [OperationContract]
         SLWCF.Result Add(ML.alumnos Alumnos);

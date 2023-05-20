@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ML", "ML\ML.csproj", "{D533F200-D31B-4A2A-9355-659BEA9BE2C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL1\PL.csproj", "{37BC651B-3934-40CB-B813-A34E67101E60}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3856C7C-740D-41B4-8E10-990020AC06AA} = {F3856C7C-740D-41B4-8E10-990020AC06AA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
