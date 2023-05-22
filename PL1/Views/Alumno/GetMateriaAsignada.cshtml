@@ -1,0 +1,91 @@
+﻿@model ML.AlumnoMateria
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-lg ">
+    <div class=row>
+            <div class="form-group hidden">
+                @Html.LabelFor(model => model.Alumnos.IdAlumnos, new { @class = "control-label col-md-2 hidden" })
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Alumnos.IdAlumnos , new { @class = "form-control hidden", @readonly = true })
+                    @Html.ValidationMessageFor(model => model.Alumnos.IdAlumnos)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    @Html.LabelFor(model => model.Alumnos.Nombre , new { @class = "control-label", @readonly = true })
+                    @Html.TextBoxFor(model => (model.Alumnos.Nombre), new { @class = "form-control", @readonly = true })
+                    @Html.ValidationMessageFor(model => model.Alumnos.Nombre)
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Alumnos.ApellidoPaterno, "Apellido Paterno", new { @class = "control-label", @readonly = true })
+                @Html.TextBoxFor(model => model.Alumnos.ApellidoPaterno, new { @class = "form-control", @readonly = true })
+                @Html.ValidationMessageFor(model => model.Alumnos.ApellidoPaterno)
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.Alumnos.ApellidoMaterno, "Apellido Materno", new { @class = "control-label", @readonly = true })
+                @Html.TextBoxFor(model => model.Alumnos.ApellidoMaterno, new { @class = "form-control", @readonly = true })
+                @Html.ValidationMessageFor(model => model.Alumnos.ApellidoMaterno)
+            </div>
+
+            <br />
+            <div class="text-center">
+                <h2>Materias de Alumno</h2>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Materia del Alumno</h5>
+                    <hr />
+                </div>
+                
+                <div class = " col-md-12 " >
+                <a class ="btn btn-success glyphicon glyphicon-plus"href="@Url.Action("GetMateriaNoAsignada", "Alumno", Model.Alumnos) " ></a>
+            </div>
+            </div>
+
+
+            @if (Model.AlumnoMaterias == null)
+            {
+                <div class="row">
+                    <div class="alert alert-danger" role="alert">
+                        @ViewBag.Message
+                    </div>
+                </div>
+            }
+            else
+            {
+                <table class="table table-dark table-hover table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <td class="text-center" style=" font-weight:lighter;">Seleccionar</td>
+                            <td class="hidden">IdMateria</td>
+                            <td class="text-center" style="font-weight:bold;">Nombre</td>
+                            <td class="text-center" style="font-weight:bold;">Costo</td>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (ML.materias Materias in Model.AlumnoMaterias)
+                         {
+                            <tr>
+                                <td class="text-center"><a class="btn btn-danger bi bi-trash" href="@Url.Action("Delete", "Area", new { IdMateria = Materias.IdMaterias })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                                <td class="hidden">@Materias.IdMaterias</td>
+                                <td>@Materias.Nombre </td>
+                                <td>@Materias.Costo </td>
+                            </tr>
+                         }
+                    </tbody>
+                </table>
+            }
+         
+    </div>
+</div>
+
+

@@ -170,7 +170,5 @@ namespace BL
             return new ML.Result();
 
         }
-
-
     }
 }
